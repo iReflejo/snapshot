@@ -1,11 +1,10 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Preferences;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
-using Android.Support.V7.Preferences;
 using Android.Views;
 using Android.Widget;
 
@@ -24,7 +23,7 @@ namespace Snapshot.App
             SetSupportActionBar(toolbar);
             SupportFragmentManager
                 .BeginTransaction()
-                .Replace(Resource.Id.content, new PrefsFragment())
+                .Replace(Resource.Id.content, new SettingsFragment())
                 .Commit();
         }
 
@@ -44,20 +43,12 @@ namespace Snapshot.App
 
             return base.OnOptionsItemSelected(item);
         }
-	}
 
-    public class PrefsFragment : PreferenceFragmentCompat
-    {
-        public override void OnCreatePreferences(Bundle savedInstanceState, string rootKey)
+        public void SearchForDirectory()
         {
-            try
-            {
-                AddPreferencesFromResource(Resource.Xml.prefs);
-            }
-            catch (Exception e)
-            {
+            var intent = new Intent(Intent.ActionOpenDocument);
 
-            }
+            StartActivityForResult(intent, 42);
         }
     }
 }
