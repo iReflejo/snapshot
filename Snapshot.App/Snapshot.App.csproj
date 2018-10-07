@@ -59,6 +59,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="SettingsFragment.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
